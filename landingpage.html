@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Reservation System</title>
+    <style>
+        /* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: url('./img/landingpagebg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 10%;
+
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .login-button {
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: white;
+            color: #004080;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-left: auto;
+            
+        }
+
+        .login-button:hover {
+            color: white;
+            background-color: rgb(233, 214, 167);
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+        }
+
+        .welcome {
+            font-size: 48px;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            margin-bottom: 5px;
+        }
+
+        .description {
+                font-size: 30px;
+                font-weight: 300;
+                max-width: 800px;
+                margin-bottom: 120px;
+                line-height: 1.8;
+                color: white;
+                text-shadow: 2px 2px 4px black;
+        }
+
+        @media (max-width: 768px) {
+            .welcome {
+                font-size: 36px;
+            }
+
+            .description {
+                font-size: 18px;
+            }
+
+            .login-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo"></div>
+        <a href="./login/login.php" class="login-button">Login</a>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="welcome">Welcome to Our Hotel Reservation System</div>
+        <div class="description">
+            "Book Easy, Stay Happy!"
+        </div>
+
+    </main>
+
+</body>
+</html>
