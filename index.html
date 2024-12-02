@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Rooms</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="user-icon">
+                <i class="fas fa-user"></i> <!-- Font Awesome User Icon -->
+            </div>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Book A Room</h1>
+            <p>For Your <strong> <br> <br>Holiday & Business Trip</strong></p>
+        </div>
+    </section>
+
+    <section class="booking-section">
+        <div class="booking-container">
+            <h2>Book a Room</h2>
+            <p>Discover the perfect space for you!</p>
+            <form class="booking-form">
+                <div class="form-group">
+                    <label for="check-date">Date</label>
+                    <input type="date" id="check-date">
+                </div>
+                <div class="form-group">
+                    <label for="adults">Adults</label>
+                    <select id="adults">
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="children">Children</label>
+                    <select id="children">
+                        <option value="0" selected>0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Search</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="services-section">
+        <h2>Services</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <img src="img/hotel-normal.jpg" alt="Rooms">
+                <h3>Rooms</h3>
+            </div>
+            <div class="service-item">
+                <img src="img/hotel-deluxe.jpg" alt="Dining">
+                <h3>Dining</h3>
+            </div>
+            <div class="service-item">
+                <img src="img/hotel-suite.jpg" alt="Conferences & Meetings">
+                <h3>Conferences & Meetings</h3>
+            </div>
+            <div class="service-item">
+                <img src="img/hotel-deluxe.jpg" alt="Service & Facilities">
+                <h3>Service & Facilities</h3>
+            </div>
+            <div class="service-item">
+                <img src="img/hotel-bg 1.png" alt="Wedding Package">
+                <h3>Wedding Package</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="rooms-section">
+        <h2>Rooms Available</h2>
+        <div class="rooms-grid">
+            <div class="room-card">
+                <img src="img/hotel-normal.jpg" alt="Normal Room">
+                <div class="room-details">
+                    <h3>Normal Room</h3>
+                    <p>Indulge in a Memorable One-Time Romantic Dinner for Two</p>
+                    <p class="price">Rs.1500 <span>/night</span></p>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="img/hotel-deluxe.jpg" alt="Deluxe Room">
+                <div class="room-details">
+                    <h3>Deluxe Room</h3>
+                    <p>Experience an Exclusively Private Environment to Boost Your Productivity</p>
+                    <p class="price">Rs.3000 <span>/night</span></p>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="img/hotel-suite.jpg" alt="Suite Room">
+                <div class="room-details">
+                    <h3>Suite Room</h3>
+                    <p>Indulge in a Memorable One-Time Romantic Dinner for Two</p>
+                    <p class="price">Rs.5000 <span>/table</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Where to start</h4>
+                <ul>
+                    <li><a href="#">Lorem 44</a></li>
+                    <li><a href="#">Marketers</a></li>
+                    <li><a href="#">Small Business</a></li>
+                    <li><a href="#">Hello World</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact us</h4>
+                <form>
+                    <input type="text" placeholder="First Name">
+                    <input type="text" placeholder="Company">
+                    <input type="text" placeholder="Phone">
+                    <input type="email" placeholder="Email">
+                    <button type="submit" class="btn-submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright All rights reserved 2024</p>
+        </div>
+    </footer>
+    
+    
+</body>
+</html>
