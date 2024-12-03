@@ -36,11 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 exit();
             }
         } else {
-            header('Location: login.html?error=Invalid%20password');
+            header('Location: login.php?error=Invalid%20password');
             exit();
         }
     } else {
-        header('Location: login.html?error=Invalid%20email');
+        header('Location: login.php?error=Invalid%20email');
         exit();
     }
 
@@ -62,7 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="auth-container">
         <div class="auth-card">
             <h1>Login</h1>
-            <p>Welcome back! Please enter your credentials to log in.</p>
             <form action="login.php" method="POST">
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -73,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="password" id="password" name="password" placeholder="Enter your password" required>
                 </div>
                 <button type="submit" class="btn">Login</button>
-            </form>
+            </form> <br>
             <p>
                 <a href="forgotpassword.php" class="forgot-password-link">Forgot Password?</a>
             </p>

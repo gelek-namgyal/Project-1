@@ -13,18 +13,26 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch statistics
+// Fetch statistics for total users and total bookings
 $totalUsersQuery = $conn->query("SELECT COUNT(*) AS total_users FROM users");
 $totalUsers = $totalUsersQuery->fetch_assoc()['total_users'];
 
+$totalBookingsQuery = $conn->query("SELECT COUNT(*) AS total_bookings FROM bookings");
+$totalBookings = $totalBookingsQuery->fetch_assoc()['total_bookings'];
+
+// Fetch recent bookings (room data will be fetched within the loop)
+$recentBookingsQuery = $conn->query("SELECT * FROM bookings ORDER BY booking_date DESC LIMIT 5");
+
+// Fetch statistics for male and female users
 $totalMaleUsersQuery = $conn->query("SELECT COUNT(*) AS male_users FROM users WHERE gender = 'Male'");
 $totalMaleUsers = $totalMaleUsersQuery->fetch_assoc()['male_users'];
 
 $totalFemaleUsersQuery = $conn->query("SELECT COUNT(*) AS female_users FROM users WHERE gender = 'Female'");
 $totalFemaleUsers = $totalFemaleUsersQuery->fetch_assoc()['female_users'];
 
-$conn->close();
+// Don't close the connection yet, we'll close it after all queries are executed
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +46,7 @@ $conn->close();
     <div class="sidebar">
         <h2>Admin Panel</h2>
         <a href="#">Dashboard</a>
-        <a href="#">Manage Buses</a>
+        <a href="#">Manage Rooms</a> <!-- Changed from "Manage Buses" to "Manage Rooms" -->
         <a href="#">Manage Bookings</a>
         <a href="#">User Management</a>
         <a href="#">Settings</a>
@@ -50,25 +58,25 @@ $conn->close();
         <!-- Navbar -->
         <div class="navbar">
             <h1>Welcome, Admin</h1>
-            <a href="database/logout.php" class="logout-btn">Logout</a>
+            <a href="../database/logout.php" class="logout-btn">Logout</a>
         </div>
 
         <!-- Dashboard Cards -->
         <div class="cards">
             <div class="card">
-                <div class="icon">🚍</div>
-                <h3>Total Buses</h3>
-                <p>5</p>
+                <div class="icon">🏨</div> <!-- Changed from "🚍" to hotel icon -->
+                <h3>Total Rooms</h3>
+                <p>5</p> <!-- You can update this as per your room data -->
             </div>
             <div class="card">
                 <div class="icon">📅</div>
                 <h3>Total Bookings</h3>
-                <p>35</p>
+                <p><?php echo $totalBookings; ?></p>
             </div>
             <div class="card">
                 <div class="icon">👥</div>
                 <h3>Total Users</h3>
-                <p>120</p>
+                <p><?php echo $totalUsers; ?></p>
             </div>
             <div class="card">
                 <div class="icon">⚙️</div>
@@ -81,35 +89,31 @@ $conn->close();
         <div class="table-container">
             <h2>Recent Bookings</h2>
             <table>
-                <tr>
-                    <th>Booking ID</th>
-                    <th>User</th>
-                    <th>Bus</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                </tr>
-                <tr>
-                    <td>#1023</td>
-                    <td>John Doe</td>
-                    <td>Bus A</td>
-                    <td>2024-11-22</td>
-                    <td>Confirmed</td>
-                </tr>
-                <tr>
-                    <td>#1024</td>
-                    <td>Jane Smith</td>
-                    <td>Bus B</td>
-                    <td>2024-11-23</td>
-                    <td>Pending</td>
-                </tr>
-                <tr>
-                    <td>#1025</td>
-                    <td>Samuel Green</td>
-                    <td>Bus C</td>
-                    <td>2024-11-24</td>
-                    <td>Confirmed</td>
-                </tr>
-            </table>
+    <tr>
+        <th>Booking ID</th>
+        <th>User</th>
+        <th>Room</th> <!-- Display the room type -->
+        <th>Days</th>
+        <th>Persons</th>
+        <th>Date</th>
+        <th>Total Price</th>
+    </tr>
+    <?php
+    // Display the recent bookings from the database
+    while ($booking = $recentBookingsQuery->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>#{$booking['booking_id']}</td>";
+        echo "<td>{$booking['user_id']}</td>";
+        echo "<td>{$booking['room_type']}</td>"; // Display room type
+        echo "<td>{$booking['days']}</td>";
+        echo "<td>{$booking['persons']}</td>";
+        echo "<td>{$booking['booking_date']}</td>";
+        echo "<td>{$booking['total_price']}</td>";
+        echo "</tr>";
+    }
+    ?>
+</table>
+
         </div>
     </div>
 
@@ -149,3 +153,8 @@ $conn->close();
     </script>
 </body>
 </html>
+
+<?php
+// Close the connection after all queries are executed
+$conn->close();
+?>
